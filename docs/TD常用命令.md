@@ -1,5 +1,5 @@
+# 常用SQL命令
 
-# 常用sql命令
 
 ## 修改用户密码
 
@@ -75,7 +75,7 @@ alter table mytable add column addfield int;
 # 表删除列
 alter table mytable drop column addfield;
 ```
- 
+
 ## 超级表操作
 
 ```sql
@@ -114,19 +114,26 @@ alter table super_table change tag old_tag_name  new_tag_name;
 # 修改子表标签值(TAG)
 alter table item_table_name set tag column_key = "value";
 ```
+
 ## 栗子
+
 创建电表超级表：super_table
+
 ```sql
 create database mydb；
 use mydb；
 create table super_dianbiao（ts timestamp,dianya float,dianliu float） tags (yezhu_name nchar(15),xiaoqu_location nchar(50),menpai_num nchar(10));
 ```
+
 创建子表dianbiao
+
 ```sql
 create table dianbiao1001 using super_dianbiao tags('张三','东城小区','1-1101');
 create table dianbiao1002 using super_dianbiao tags('李四','东城小区','1-1102');
 ```
+
 往子表中插入数据
+
 ```sql
 insert into dianbiao1001 values(now,1.7,3.2);
 ```
